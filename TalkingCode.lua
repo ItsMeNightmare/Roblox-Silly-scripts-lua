@@ -1,8 +1,3 @@
-LUAVER = _VERSION
-LUAVERNUM = tonumber(string.sub(LUAVER,5,9999))
-if LUAVERNUM < 5.4 then
-print("--WARNING--<This lua verison is out of date please update lua>--WARNING\n")
-end
 print("--Talking code running on, "..LUAVER.."--")
 print("\n")
 Yes = [[
