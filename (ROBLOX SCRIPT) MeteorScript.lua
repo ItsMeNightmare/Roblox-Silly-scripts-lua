@@ -39,6 +39,5 @@ Players.PlayerAdded:Connect(function(Player)
 				wait(20)
 				Cooldown = false
 			end
-			end
 	end)
-end)
+	end)
