@@ -1,4 +1,5 @@
 local Players = game:GetService("Players")
+local Cooldown = false
 local DeleteFunction = coroutine.create(function(Object,Time)
 wait(Time)
 Object:Destroy()
@@ -8,7 +9,8 @@ Players.PlayerAdded:Connect(function(Player)
 		local PlayerCharacter = Player.Character
 		local HumanoidRootPart = PlayerCharacter:FindFirstChild("HumanoidRootPart")
 		local Humanoid = PlayerCharacter:FindFirstChild("Humanoid")
-		if Message == "The sky is clear today!" then
+			if Message == "The sky is clear today!" and Cooldown == false then
+				Cooldown = true
 			local Meteor = Instance.new("Part",workspace)
 			local MeteorFire = Instance.new("Fire",Meteor)
 			Meteor.Name = "METEOR"
@@ -33,7 +35,10 @@ Players.PlayerAdded:Connect(function(Player)
 			end)
 			Humanoid.WalkSpeed = 0
 			Humanoid.JumpPower = 0
-			coroutine.resume(DeleteFunction,Meteor,15)
-		end
+				coroutine.resume(DeleteFunction,Meteor,15)
+				wait(20)
+				Cooldown = false
+			end
+			end
 	end)
 end)
